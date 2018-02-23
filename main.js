@@ -1,7 +1,18 @@
 (function(){
 
     var currentDate = new Date();
-    var newDate = new Date (2019,0,1);
+    var nextYearDate = new Date (2019,0,1);
+
+    var showCurrentDate = document.getElementById("day-place");
+    var appendHours = document.getElementById("hour");
+    var appendMinutes = document.getElementById("minute");
+    var appendSeconds = document.getElementById("second");
+    var showNextDate = document.getElementById("next-year");  
+
+    var hours = new Date().getHours();
+    var minutes = new Date().getMinutes();
+    var seconds = new Date().getSeconds();
+
     createDatePage();
      
     function createDatePage(){
@@ -14,7 +25,6 @@
     } 
 // Current Date
     function appendCurrentDate(){
-        var showCurrentDate = document.getElementById("day-place");
         showCurrentDate.innerHTML = "Сeгодня " + getDays() + ", " + getDates() + " " + getMonths();
     };
 
@@ -26,8 +36,8 @@
     };
 
     function getDates() {
-        var todayNumber = currentDate.getDate();
-        return todayNumber;
+        var currentNumber;
+        return currentNumber = currentDate.getDate();
     };
 
     function getMonths() {
@@ -39,61 +49,45 @@
 
 // Current Time
     function appendTime() {
-        document.getElementById("hour").innerHTML = appendHours();
-        document.getElementById("minute").innerHTML = appendMinutes();
-        document.getElementById("second").innerHTML = appendSeconds();   
+        appendHours.innerHTML = correctDisplayindTime(hours);
+        appendMinutes.innerHTML = correctDisplayindTime(minutes);
+        appendSeconds.innerHTML = correctDisplayindTime(seconds); 
     };
    
-    function appendHours() {
-        var hours = new Date().getHours();
-        if(hours < 10) {
-            hours = '0' + hours;
+   function correctDisplayindTime(selector){
+       if(selector < 10) {
+        selector = '0' + selector;
         }
-        return hours;
-    }
+        return selector;
+   }
 
-    function appendMinutes() {
-        var minutes = new Date().getMinutes();
-        if(minutes < 10) {
-            minutes = '0' + minutes;
-        }
-        return minutes;
-    }
-    function appendSeconds() {
-        var seconds = new Date().getSeconds();
-        if(seconds < 10) {
-            seconds = '0' + seconds;
-        }
-        return seconds;
-    }
-   
 // Countdown
     function appendCountDown() {
-        var showNextDate = document.getElementById("next-year");
-        showNextDate.innerHTML = "До 2019 года осталось " + getCountDown() + " " + validateDays() + "." ;
+        showNextDate.innerHTML = "До 2019 года осталось " + getCountDown() + " " + validateDays();
     };
 
     function getCountDown() {
-        if (newDate > currentDate){
-            var numberOfDays = newDate - currentDate;
+        if (nextYearDate > currentDate){
+            var numberOfDays = nextYearDate - currentDate;
             numberOfDays = parseInt(numberOfDays / (1000 * 60 * 60 * 24));
             numberOfDays = String(numberOfDays);
             return numberOfDays; 
-        }
-        else {showNextDate.innerHTML = "Дата недействительна."};
+        } else {
+            showNextDate.innerHTML = "Дата недействительна."
+        };
     };
 
     function validateDays() {
          var currentNumber = getCountDown();
          var lastNumber = currentNumber.slice(-1);
          var twoLastNubbers = currentNumber.slice(-2);
-         var days1 = "день",  
-             days2 = "дня", 
-             days3 = "дней";
+         var days1 = "день.",  
+             days2 = "дня.", 
+             days3 = "дней.";
         if (currentNumber === 1 || lastNumber === 1 ) { 
           return days1;
         }
-        else if (twoLastNubbers > 10 &&  twoLastNubbers < 21) {
+        else if (twoLastNubbers >= 10 &&  twoLastNubbers < 21) {
             return days3;
         }
         else if(lastNumber > 1 && lastNumber < 5) {
