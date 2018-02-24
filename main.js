@@ -1,26 +1,21 @@
 (function(){
 
-    var currentDate = new Date();
-    var nextYearDate = new Date (2019,0,1);
-
-    var showCurrentDate = document.getElementById("day-place");
-    var appendHours = document.getElementById("hour");
-    var appendMinutes = document.getElementById("minute");
-    var appendSeconds = document.getElementById("second");
-    var showNextDate = document.getElementById("next-year");  
-
-    var hours = new Date().getHours();
-    var minutes = new Date().getMinutes();
-    var seconds = new Date().getSeconds();
+    var currentDate = new Date(),
+        nextYearDate = new Date (2019,0,1),
+        showCurrentDate = document.getElementById("day-place"),
+        createHours = document.getElementById("hour"),
+        createMinutes = document.getElementById("minute"),
+        createSeconds = document.getElementById("second"),
+        showNextDate = document.getElementById("next-year");  
 
     createDatePage();
      
     function createDatePage(){
         appendCurrentDate();
-        appendTime(); 
+        appendTime();
         appendCountDown();
         setInterval(function() {
-            appendTime(); 
+            appendTime();
         }, 1000);
     } 
 // Current Date
@@ -48,12 +43,12 @@
     };
 
 // Current Time
-    function appendTime() {
-        appendHours.innerHTML = correctDisplayindTime(hours);
-        appendMinutes.innerHTML = correctDisplayindTime(minutes);
-        appendSeconds.innerHTML = correctDisplayindTime(seconds); 
+    function appendTime() {    
+        createHours.innerHTML = correctDisplayindTime(new Date().getHours());
+        createMinutes.innerHTML = correctDisplayindTime(new Date().getMinutes());
+        createSeconds.innerHTML = correctDisplayindTime(new Date().getSeconds()); 
     };
-   
+
    function correctDisplayindTime(selector){
        if(selector < 10) {
         selector = '0' + selector;
