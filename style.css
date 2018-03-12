@@ -1,4 +1,44 @@
 
+.show{
+  display: block
+}
+.hide{
+  display: none;
+}
+
+.set-timer-area {
+  display: flex;
+  justify-content: center;
+}
+.form-group {
+  margin-bottom: 0;
+}
+.timer-area {
+  padding-left: 0 !important;
+}
+.add-alarm {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+.image-alarm {
+  width: 27px;
+  height: 27px;
+  float: left;
+  margin: 4px 7px;
+}
+.text-alarm {
+  display: none;
+  justify-content: center;
+}
+.image-clear-alarm {
+  width: 30px;
+  height: 30px;
+  margin: 6px;
+}
+.btn-secondary {
+  margin-right: 15px;
+}
 .site-wrapper {
     margin-top: 110px;
 }
@@ -53,7 +93,7 @@
     bottom: 0;
     background: linear-gradient(to bottom, transparent, black);
   }
-  
+
   .clock > div {
     display: flex;
   }
@@ -65,3 +105,6 @@
   .tick-hidden {
     opacity: 0;
   }
+
+
+  

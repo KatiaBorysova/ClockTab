@@ -6,38 +6,114 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="site-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 today-date" id="day-place"></div><!--Сегодня среда, 10 января.-->
-        </div> 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="clock">
-                    <div>Текущее время:&nbsp;</div>
-                    <div id="hour">
-                       
-                    </div>
-                    <div class="tick">:</div>
-                    <div id="minute" >
-                       
-                    </div>
-                    <div class="tick">:</div>
-                    <div id="second">
-                      
-                    </div>
-                    </div>
-            </div>
-            
-        </div>
 
-        <div class="row">
-            <div class="col-md-12 today-date" id="next-year"></div>	
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="data-time" class="nav-buttons button"><a href="#">Дата и время</a></li>
+                <li id="main-timer" class="nav-buttons button"><a href="#">Таймер</a></li>
+                <li id="main-alarm" class="nav-buttons button"><a href="#">Будильник</a></li>
+            </ul>
         </div>
-        
+    </div>
+</nav>
+
+<div class="site-wrapper">
+ <!---   Date view   -->
+<div class="container first-data hide">
+    <div class="row">
+        <div class="col-md-12 today-date" id="day-place"></div><!--Сегодня среда, 10 января.-->
+    </div> 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="clock">
+                <div>Текущее время:&nbsp;</div>
+                <div id="hour"></div>
+                <div class="tick">:</div>
+                <div id="minute"></div>
+                <div class="tick">:</div>
+                <div id="second"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 today-date" id="next-year"></div>	
+    </div>
+    
+</div>
+
+<!--  Timer view  -->
+<div class="container second-timer hide">
+
+    <div class="row">
+            <div class="col-md-12 today-date">Установите таймер:</div>	
+     </div>
+
+    <div class="row set-timer-area" style="margin: 20px; text-align: center">
+        <div class="form-group col-md-2 timer-area">
+            <input id="set-timer-hours" type="text" placeholder="часы" class="form-control">
+        </div>
+        <div class="form-group col-md-2 timer-area">
+            <input id="set-timer-minutes" type="text" placeholder="минуты" class="form-control">
+        </div>
+        <div class="form-group col-md-2 timer-area">
+            <input id="set-timer-seconds" type="text" placeholder="секунды" class="form-control">
+        </div>
+        <div class=" col-md">
+            <button id="ready" type="button" class="btn btn-secondary">Готово</button>
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="clock timer-clock">
+                <div>Отсчет :&nbsp;</div>
+                <div id="hour" class="timer-hour">00</div>
+                <div class="tick">:</div>
+                <div id="minute" class="timer-minute">00</div>
+                <div class="tick">:</div>
+                <div id="second" class="timer-second">00</div>
+            </div> 
+        </div>     
+    </div>
+
+    <div class="row" style="margin: 20px; text-align: center">
+        <button id="start" type="button" class="btn">Старт</button>
+        <button id="stop" type="button" class="btn">Стоп</button>
     </div>
 </div>
-<!-- <script src="js/data.js"></script> -->
-<script src="main.js"></script>
+
+<!--   Alarm view  -->
+<div class="container third-alarm hide">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="clock">
+                <div>Текущее время :&nbsp;</div>
+                <div id="a-hour"></div>
+                <div class="tick">:</div>
+                <div id="a-minute"></div>
+                <div class="tick">:</div>
+                <div id="a-second"></div>
+            </div>
+        </div>
+    </div>
+    <div class="alarm-block">  
+        <div class="row add-alarm " > 
+                <img class="image-alarm" src="images/alarm.png">
+                <div class="form-group col-md-2">
+                     <input id="set-alarm-time" type="time" class="form-control">
+                </div>
+                <div class="buttons-gr">
+                    <button id="create-alarm" type="button" class="btn btn-secondary">Добавить будильник</button>
+                </div>
+        </div>
+        <div id="alarms-container"> </div> 
+    </div>
+</div>
+</div> <!--/.site-wrapper-->
+<script src="alarm.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
